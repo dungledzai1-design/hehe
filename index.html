@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="dleedev">
+  <meta name="theme-color" content="#0a0a12">
+  <title>dleedev - Hỗ Trợ Kéo Tâm</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" href="icon.png">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+  <div class="scan-line"></div>
+
+  <div class="app-container">
+
+    <!-- ============ HEADER ============ -->
+    <header class="app-header">
+      <div class="logo-wrap">
+        <div class="logo-icon">D</div>
+        <div class="logo-text">dleedev</div>
+      </div>
+      <div class="app-subtitle">Hỗ Trợ Kéo Tâm FF</div>
+
+      <div class="verified-badge">
+        <svg class="verified-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L14.5 4.5L18 4L19 7.5L22 9.5L20.5 12.5L22 15.5L19 17.5L18 21L14.5 20.5L12 23L9.5 20.5L6 21L5 17.5L2 15.5L3.5 12.5L2 9.5L5 7.5L6 4L9.5 4.5L12 2Z" fill="#00ff88" opacity="0.2"/>
+          <path d="M12 2L14.5 4.5L18 4L19 7.5L22 9.5L20.5 12.5L22 15.5L19 17.5L18 21L14.5 20.5L12 23L9.5 20.5L6 21L5 17.5L2 15.5L3.5 12.5L2 9.5L5 7.5L6 4L9.5 4.5L12 2Z" stroke="#00ff88" stroke-width="1.5"/>
+          <path d="M8.5 12.5L11 15L15.5 10" stroke="#00ff88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Đã được xác nhận bởi dleedev</span>
+      </div>
+    </header>
+
+    <!-- ============ PANEL: KÉO TÂM ============ -->
+    <section class="panel">
+      <div class="rog-corner tl"></div>
+      <div class="rog-corner tr"></div>
+      <div class="rog-corner bl"></div>
+      <div class="rog-corner br"></div>
+
+      <div class="panel-title">
+        <span class="live-dot"></span>Kéo Tâm - Aim Assist
+      </div>
+
+      <!-- Crosshair preview -->
+      <div class="crosshair-preview">
+        <div class="crosshair inactive" id="crosshair">
+          <div class="crosshair-line top"></div>
+          <div class="crosshair-line bottom"></div>
+          <div class="crosshair-line left"></div>
+          <div class="crosshair-line right"></div>
+          <div class="crosshair-dot"></div>
+        </div>
+      </div>
+
+      <!-- Toggles -->
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-name">Bật Kéo Tâm</div>
+          <div class="toggle-desc">Hỗ trợ bám đầu, tâm súng đầm hơn</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleAim">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-name">Bám Đầu (Head Track)</div>
+          <div class="toggle-desc">Kéo tâm dễ bám đầu chuẩn xác hơn</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleHead">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-name">Tâm Đầm (Recoil Control)</div>
+          <div class="toggle-desc">Không bị lố, không nhạy quá</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleRecoil">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <!-- Slider độ nhạy -->
+      <div class="slider-row">
+        <div class="slider-label">
+          <span class="slider-name">Độ nhạy kéo tâm</span>
+          <span class="slider-value" id="sensValue">50</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" class="range-slider" id="sensSlider">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span class="slider-name">Độ bám đầu</span>
+          <span class="slider-value" id="headValue">60</span>
+        </div>
+        <input type="range" min="0" max="100" value="60" class="range-slider" id="headSlider">
+      </div>
+    </section>
+
+    <!-- ============ PANEL: HIỆU NĂNG ============ -->
+    <section class="panel">
+      <div class="rog-corner tl"></div>
+      <div class="rog-corner tr"></div>
+      <div class="rog-corner bl"></div>
+      <div class="rog-corner br"></div>
+
+      <div class="panel-title">
+        <span class="live-dot"></span>Tối Ưu Hiệu Năng
+      </div>
+
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-icon">🔥</div>
+          <div class="status-value" id="tempValue">32°C</div>
+          <div class="status-label">Nhiệt Máy</div>
+          <div class="temp-bar"><div class="temp-fill" id="tempFill"></div></div>
+        </div>
+        <div class="status-card">
+          <div class="status-icon">⚡</div>
+          <div class="status-value" id="fpsValue">60</div>
+          <div class="status-label">FPS Mượt</div>
+        </div>
+        <div class="status-card">
+          <div class="status-icon">📶</div>
+          <div class="status-value" id="pingValue">28</div>
+          <div class="status-label">Ping (ms)</div>
+        </div>
+        <div class="status-card">
+          <div class="status-icon">🧊</div>
+          <div class="status-value" id="coolValue">Tốt</div>
+          <div class="status-label">Làm Mát</div>
+        </div>
+      </div>
+
+      <div class="toggle-row" style="margin-top: 6px;">
+        <div class="toggle-label">
+          <div class="toggle-name">Làm Mượt Máy</div>
+          <div class="toggle-desc">Tối ưu RAM, mượt khi chơi game</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleSmooth">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-name">Giảm Nóng Máy</div>
+          <div class="toggle-desc">Kiểm soát nhiệt độ CPU/GPU</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleCool">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-name">Chạy Hoạt Động Tối Ưu</div>
+          <div class="toggle-desc">Tối ưu hoạt động hệ thống iPhone</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleRun">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ============ NÚT KÍCH HOẠT ============ -->
+    <button class="btn-activate" id="btnActivate">
+      ▶ Kích Hoạt Cấu Hình
+    </button>
+
+    <!-- ============ THÔNG TIN CHỨNG CHỈ ============ -->
+    <div class="cert-info">
+      <div class="cert-info-row">
+        <span>Ký bởi:</span><span>dleedev</span>
+      </div>
+      <div class="cert-info-row">
+        <span>Xác nhận bởi:</span><span>dleedev</span>
+      </div>
+      <div class="cert-info-row">
+        <span>Chứng chỉ:</span><span>✓ Xanh (Verified)</span>
+      </div>
+      <div class="cert-info-row">
+        <span>Hạn sử dụng:</span><span>Vĩnh viễn - 9090</span>
+      </div>
+      <div class="cert-info-row">
+        <span>Can thiệp game:</span><span>✓ KHÔNG</span>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="powered">dleedev</div> Gaming Optimization • vĩnh viễn
+    </footer>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
